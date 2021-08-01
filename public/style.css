@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+.app-container {
+  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.tasks-view .today {
+  position: relative;
+  color: purple;
+  border-bottom: 2px solid purple;
+}
+.tasks-view .today h3 {
+  font-weight: 500;
+}
+.tasks-view .today h1 {
+  margin-bottom: 10px;
+}
+.tasks-view .task {
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(192, 93, 192, 0.432);
+}
+.tasks-view .task h1 {
+  font-size: 25px;
+  margin-bottom: 2px;
+}
+.tasks-view .task h3 {
+  font-size: 18px;
+}
+.tasks-view .task button {
+  padding: 5px;
+  border-radius: 0px;
+  border: none;
+  position: absolute;
+  right: 0;
+  padding: 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.tasks-view .task button:active {
+  transform: scale(0.95);
+}
+.tasks-view .task .button-complete {
+  background-color: #c6ff71;
+  top: 5px;
+}
+.tasks-view .task .button-delete {
+  background-color: #ff7d7d;
+  bottom: 5px;
+}
+.tasks-view .add-task-button {
+  text-transform: uppercase;
+  padding: 7px;
+  border: 1px solid purple;
+  background-color: white;
+  cursor: pointer;
+  float: right;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: purple;
+  transition: all 0.1s;
+}
+.tasks-view .add-task-button:active {
+  transform: scale(0.95);
+  background-color: purple;
+  color: white;
+}
+
+.add-task-view {
+  position: relative;
+  padding-top: 40px;
+}
+.add-task-view h1 {
+  margin-top: -25px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid purple;
+  color: purple;
+}
+.add-task-view .input-row {
+  padding: 5px 0;
+  height: 50px;
+  position: relative;
+}
+.add-task-view .input-row label {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 120%;
+  min-width: 100px;
+}
+.add-task-view .input-row input, .add-task-view .input-row select {
+  height: 30px;
+  display: inline-block;
+  width: calc(100% - 100px);
+  position: absolute;
+  border: 1px solid purple;
+  font-size: 110%;
+  padding: 2px;
+  outline: none;
+  transition: all 0.1s;
+}
+.add-task-view .input-row input:active, .add-task-view .input-row input:focus, .add-task-view .input-row select:active, .add-task-view .input-row select:focus {
+  background-color: rgba(128, 0, 128, 0.171);
+}
+.add-task-view button {
+  text-transform: uppercase;
+  padding: 7px;
+  border: 1px solid purple;
+  background-color: white;
+  cursor: pointer;
+  float: right;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: purple;
+  transition: all 0.1s;
+}
+.add-task-view button:active {
+  transform: scale(0.95);
+  background-color: purple;
+  color: white;
+}
+
+.nav-button {
+  color: purple;
+  position: absolute;
+  border: 2px solid purple;
+  width: 30px;
+  height: 30px;
+  right: 0;
+  top: 5px;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+.nav-button span {
+  position: absolute;
+  font-size: 30px;
+  font-weight: 600;
+  top: -5px;
+  left: 4px;
+}
+.nav-button:hover, .nav-button:focus {
+  background-color: purple;
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */
