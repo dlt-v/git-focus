@@ -3,7 +3,7 @@ import { Task } from "./Task.js";
 import { NavButton } from "./NavButton.js";
 import { AddTaskView } from "./AddTaskView.js";
 
-const Tasks = [
+let Tasks = [
     {
         id: 1,
         name: "Buy Groceries",
@@ -25,12 +25,13 @@ export class App extends React.Component {
             currentPage: "add-task",
         };
         this.changePage = this.changePage.bind(this);
+        this.addTask = this.addTask.bind(this);
     }
 
     render() {
         let currentPage = this.state.currentPage;
         let view =
-            currentPage === "add-task" ? <AddTaskView changePage={this.changePage}/> : this.renderTaskList();
+            currentPage === "add-task" ? <AddTaskView addTask={this.addTask} changePage={this.changePage}/> : this.renderTaskList();
         return <div className="app-container">{view}</div>;
     }
 
@@ -62,5 +63,17 @@ export class App extends React.Component {
                 />
             </div>
         );
+    }
+
+    addTask(name, time, hour, flag) {
+        const newTasks = [...Tasks,
+            {
+                id: 3,
+                name: name,
+                time: new Date(),
+                flag: flag
+            }
+        ];
+        Tasks = newTasks;
     }
 }

@@ -11,16 +11,20 @@ export class AddTaskView extends React.Component {
             flag: "",
         };
         this.handleChange = this.handleChange.bind(this);
+        this.sumbitTask = this.sumbitTask.bind(this);
     }
     handleChange(event) {
         const target = event.target;
         const value =
             target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;
-        console.log(value);
+        console.log(this.state);
         this.setState({
             [name]: value,
         });
+    }
+    sumbitTask() {
+        this.props.addTask(this.state.name, this.state.date, this.state.time, this.state.flag);
     }
     render() {
         return (
@@ -30,10 +34,10 @@ export class AddTaskView extends React.Component {
                 </div>
                 <h1>Add Task</h1>
                 <div className="input-row">
-                    <label htmlFor="task">Name:</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type="text"
-                        name="task"
+                        name="name"
                         onChange={this.handleChange}
                     />
                 </div>
@@ -47,11 +51,11 @@ export class AddTaskView extends React.Component {
                     />
                 </div>
                 <div className="input-row">
-                    <label htmlFor="date">Hour:</label>
+                    <label htmlFor="time">Hour:</label>
                     <input
                         type="time"
                         name="date"
-                        id="date"
+                        id="time"
                         onChange={this.handleChange}
                     />
                 </div>
@@ -64,7 +68,7 @@ export class AddTaskView extends React.Component {
                         <option value="yellow">yellow</option>
                     </select>
                 </div>
-                <button>Add</button>
+                <button onClick={this.sumbitTask}>Add</button>
                 <NavButton
                     content="Back"
                     changePage={this.props.changePage}
