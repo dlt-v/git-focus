@@ -18,13 +18,24 @@ export class AddTaskView extends React.Component {
         const value =
             target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;
-        console.log(this.state);
         this.setState({
             [name]: value,
         });
     }
     sumbitTask() {
-        this.props.addTask(this.state.name, this.state.date, this.state.time, this.state.flag);
+        const fullTime = new Date(`${this.state.date} ${this.state.time}`);
+        const time = `${fullTime.getDate()}-${fullTime.getMonth() + 1}-${fullTime.getFullYear()}, ${fullTime.getHours()}:${fullTime.getMinutes()}`
+        this.props.addTask(this.state.name ? this.state.name : 'No name', time, this.state.flag);
+        this.resetInputs();
+    }
+    resetInputs() {
+        this.setState({
+            name: "",
+            date: "",
+            time: "",
+            flag: "",
+        })
+        this.props.changePage();
     }
     render() {
         return (
@@ -54,7 +65,7 @@ export class AddTaskView extends React.Component {
                     <label htmlFor="time">Hour:</label>
                     <input
                         type="time"
-                        name="date"
+                        name="time"
                         id="time"
                         onChange={this.handleChange}
                     />

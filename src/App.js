@@ -17,6 +17,11 @@ let Tasks = [
         flag: "blue",
     },
 ];
+let nextTaskId = 3;
+const getNextTaskId = () => {
+    nextTaskId += 1;
+    return nextTaskId;
+}
 export class App extends React.Component {
     constructor(props) {
         super(props);
@@ -65,12 +70,12 @@ export class App extends React.Component {
         );
     }
 
-    addTask(name, time, hour, flag) {
+    addTask(name, time, flag) {
         const newTasks = [...Tasks,
             {
-                id: 3,
+                id: getNextTaskId(),
                 name: name,
-                time: new Date(),
+                time: time.toLocaleString(),
                 flag: flag
             }
         ];
