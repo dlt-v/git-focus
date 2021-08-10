@@ -9,12 +9,14 @@ let Tasks = [
         name: "Buy Groceries",
         time: new Date(),
         flag: "green",
+        done: false
     },
     {
         id: 2,
         name: "Visit Mom",
         time: new Date(),
         flag: "blue",
+        done: false
     },
 ];
 let nextTaskId = 3;
@@ -33,6 +35,7 @@ export class App extends React.Component {
         this.changePage = this.changePage.bind(this);
         this.addTask = this.addTask.bind(this);
         this.deleteTask = this.deleteTask.bind(this);
+        this.finishTask = this.finishTask.bind(this);
     }
 
     render() {
@@ -60,7 +63,7 @@ export class App extends React.Component {
                 </div>
                 {this.state.tasks.map((task) => {
                     return (
-                        <Task deleteTask={this.deleteTask} taskId={task.id} key={task.id} name={task.name} time={task.time} />
+                        <Task finishTask={this.finishTask} deleteTask={this.deleteTask} taskId={task.id} key={task.id} name={task.name} time={task.time} />
                     );
                 })}
                 <NavButton
@@ -78,7 +81,8 @@ export class App extends React.Component {
                 id: getNextTaskId(),
                 name: name,
                 time: time.toLocaleString(),
-                flag: flag
+                flag: flag,
+                done: false
             }
         ];
         this.setState({tasks: newTasks});
@@ -87,6 +91,17 @@ export class App extends React.Component {
     deleteTask(taskId) {
         let newTasks = this.state.tasks;
         newTasks = newTasks.filter(task => task.id !== taskId);
+        this.setState({tasks: newTasks});
+    }
+
+    finishTask(taskId) { //update "done" flag in the given task
+        let newTasks = this.state.tasks;
+        newTasks = newTasks.forEach(task => {
+            if (task.id === taskId) {
+                task.done = !task.done;
+            }
+            return task;
+        });
         this.setState({tasks: newTasks});
     }
 }

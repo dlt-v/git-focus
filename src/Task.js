@@ -4,6 +4,7 @@ export class Task extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleFinish = this.handleFinish.bind(this);
     }
     render() {
         return (
@@ -12,12 +13,15 @@ export class Task extends React.Component {
                 <h3 className="task-time">
                     {this.props.time.toLocaleString()}
                 </h3>
-                <button className="button-complete">Complete</button>
+                <button onClick={this.handleFinish} className="button-complete">Complete</button>
                 <button onClick={this.handleDelete} className="button-delete">Delete</button>
             </div>
         );
     }
     handleDelete() {
         this.props.deleteTask(this.props.taskId);
+    }
+    handleFinish() {
+        this.props.finishTask(this.props.taskId);
     }
 }
