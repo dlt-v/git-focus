@@ -27,10 +27,12 @@ export class App extends React.Component {
         super(props);
         this.name = props.name;
         this.state = {
-            currentPage: "add-task",
+            currentPage: "task-list",
+            tasks: Tasks
         };
         this.changePage = this.changePage.bind(this);
         this.addTask = this.addTask.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
     }
 
     render() {
@@ -56,9 +58,9 @@ export class App extends React.Component {
                         <span>{">"}</span>
                     </div>
                 </div>
-                {Tasks.map((task) => {
+                {this.state.tasks.map((task) => {
                     return (
-                        <Task key={task.id} name={task.name} time={task.time} />
+                        <Task deleteTask={this.deleteTask} taskId={task.id} key={task.id} name={task.name} time={task.time} />
                     );
                 })}
                 <NavButton
@@ -71,7 +73,7 @@ export class App extends React.Component {
     }
 
     addTask(name, time, flag) {
-        const newTasks = [...Tasks,
+        const newTasks = [...this.state.tasks,
             {
                 id: getNextTaskId(),
                 name: name,
@@ -79,6 +81,12 @@ export class App extends React.Component {
                 flag: flag
             }
         ];
-        Tasks = newTasks;
+        this.setState({tasks: newTasks});
+    }
+
+    deleteTask(taskId) {
+        let newTasks = this.state.tasks;
+        newTasks = newTasks.filter(task => task.id !== taskId);
+        this.setState({tasks: newTasks});
     }
 }
