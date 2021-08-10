@@ -62,6 +62,21 @@
                 bottom: 5px;
             }
         }
+        .complete {
+            color: rgb(177, 177, 177);
+            .button-complete {
+                display: none;
+            }
+            .button-delete {
+                background-color: rgb(255, 184, 184);
+                color: grey;
+                transition: .2s all;
+                &:hover {
+                    background-color: rgb(255, 125, 125);
+                    color: black;
+                }
+            }
+        }
         .add-task-button {
             text-transform: uppercase;
             padding: 7px;
