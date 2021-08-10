@@ -58,7 +58,7 @@ export class App extends React.Component {
                         <span>{">"}</span>
                     </div>
                 </div>
-                {Tasks.map((task) => {
+                {this.state.tasks.map((task) => {
                     return (
                         <Task deleteTask={this.deleteTask} taskId={task.id} key={task.id} name={task.name} time={task.time} />
                     );
@@ -81,15 +81,12 @@ export class App extends React.Component {
                 flag: flag
             }
         ];
-        console.log(newTasks);
         this.setState({tasks: newTasks});
-        console.log(this.state);
     }
 
     deleteTask(taskId) {
-        console.log(`I am deleting task number: ${taskId}`);
-        let newTasks = Tasks;
+        let newTasks = this.state.tasks;
         newTasks = newTasks.filter(task => task.id !== taskId);
-        Tasks = newTasks;
+        this.setState({tasks: newTasks});
     }
 }
