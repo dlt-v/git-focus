@@ -59,6 +59,21 @@
   background-color: #ff7d7d;
   bottom: 5px;
 }
+#root .tasks-view .complete {
+  color: #b1b1b1;
+}
+#root .tasks-view .complete .button-complete {
+  display: none;
+}
+#root .tasks-view .complete .button-delete {
+  background-color: #ffb8b8;
+  color: grey;
+  transition: 0.2s all;
+}
+#root .tasks-view .complete .button-delete:hover {
+  background-color: #ff7d7d;
+  color: black;
+}
 #root .tasks-view .add-task-button {
   text-transform: uppercase;
   padding: 7px;
