@@ -1,21 +1,21 @@
-import React from "react";
-import { Task } from "./Task.js";
-import { NavButton } from "./NavButton.js";
-import { AddTaskView } from "./AddTaskView.js";
+import React from 'react';
+import { Task } from './Task.js';
+import { NavButton } from './NavButton.js';
+import { AddTaskView } from './AddTaskView.js';
 
 const Tasks = [
     {
         id: 1,
-        name: "Buy Groceries",
+        name: 'Buy Groceries',
         time: new Date(),
-        flag: "green",
+        flag: 'green',
         done: false,
     },
     {
         id: 2,
-        name: "Visit Mom",
+        name: 'Visit Mom',
         time: new Date(),
-        flag: "blue",
+        flag: 'blue',
         done: false,
     },
 ];
@@ -29,7 +29,7 @@ export class App extends React.Component {
         super(props);
         this.name = props.name;
         this.state = {
-            currentPage: "task-list",
+            currentPage: 'task-list',
             tasks: Tasks,
         };
         this.changePage = this.changePage.bind(this);
@@ -41,7 +41,7 @@ export class App extends React.Component {
     render() {
         let currentPage = this.state.currentPage;
         let view =
-            currentPage === "add-task" ? (
+            currentPage === 'add-task' ? (
                 <AddTaskView
                     addTask={this.addTask}
                     changePage={this.changePage}
@@ -49,7 +49,11 @@ export class App extends React.Component {
             ) : (
                 this.renderTaskList()
             );
-        return <div className="app-container">{view}</div>;
+        return (
+            <div className="w-80 mx-auto my-8 bg-gray-100 p-4 rounded-lg shadow-xl">
+                {view}
+            </div>
+        );
     }
 
     changePage(newPage) {
@@ -60,13 +64,10 @@ export class App extends React.Component {
 
     renderTaskList() {
         return (
-            <div className="tasks-view">
+            <div className="relative">
                 <div className="today">
                     <h3>August 18th</h3>
-                    <h1>Monday_</h1>
-                    <div className="nav-button">
-                        <span>{">"}</span>
-                    </div>
+                    <h1 className="text-2xl font-bold">Monday_</h1>
                 </div>
                 {this.state.tasks.map((task) => {
                     return (

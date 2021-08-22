@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { TaskButton } from './TaskButton';
 
 export class Task extends React.Component {
     constructor(props) {
@@ -8,17 +9,21 @@ export class Task extends React.Component {
     }
     render() {
         return (
-            <div className={this.props.done ? "task complete" : "task"}>
-                <h1 className="task-name">{this.props.name}</h1>
+            <div className="bg-yellow-200 p-4 rounded-lg shadow-md mt-4">
+                <h1 className="font-medium">{this.props.name}</h1>
                 <h3 className="task-time">
                     {this.props.time.toLocaleString()}
                 </h3>
-                <button onClick={this.handleFinish} className="button-complete">
-                    Complete
-                </button>
-                <button onClick={this.handleDelete} className="button-delete">
-                    Delete
-                </button>
+                <TaskButton
+                    onClick={this.handleFinish}
+                    text="Complete"
+                    color="green"
+                />
+                <TaskButton
+                    onClick={this.handleDelete}
+                    text="Delete"
+                    color="red"
+                />
             </div>
         );
     }
